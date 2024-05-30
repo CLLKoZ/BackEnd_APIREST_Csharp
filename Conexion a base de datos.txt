@@ -1,0 +1,39 @@
+En Program.cs
+
+builder.Services.AddDbContext<DbempresaContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
+});
+
+En appsettings.json
+
+"ConnectionStrings": {
+  "Default": "Server=localhost\\SQLEXPRESS;Initial Catalog=DBEmpresa;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+},
+
+--- Para crear los modelos a partir de la base
+ Scaffold-DbContext "Server=localhost\SQLEXPRESS;Initial Catalog=DBEmpresa;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False" Microsoft.EntityFrameworkCore.SqlServer -OutPutDir Models
+
+--- Para usar el ORM
+dotnet tool install --global dotnet-ef --version 8.0.5
+
+dotnet ef migrations add init
+dotnet ef database update
+
+
+
+
+
+
+
+===== ANGULAR =====
+crear componentes
+>> ng g c Dialogs/DialogoDelete
+
+>> ng add @angular/material
+
+crear interfaces
+>> ng g i Interfaces/Departameto
+
+crear servicios
+>> ng g s Services/Departamento
